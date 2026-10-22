@@ -1,0 +1,326 @@
+{
+  "evaluation_type": "retrieval_only",
+  "dataset": "synthetic_demo_benchmark",
+  "total_samples": 5,
+  "k": 3,
+  "retrievers": {
+    "TF-IDF": {
+      "aggregate_metrics": {
+        "precision_at_k": 0.3333333333333333,
+        "recall_at_k": 1.0,
+        "mrr_at_k": 1.0
+      },
+      "per_question": [
+        {
+          "sample_id": "RAG-001",
+          "question": "Which file formats does the demo evaluation platform support for exporting datasets?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01",
+            "doc-limits-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.6130109516077638
+            },
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.08424431003190451
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-002",
+          "question": "For how long are benchmark results retained by default in the demo platform?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 0.4923659639173312
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.1321039324661212
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-003",
+          "question": "What is the maximum number of prompts in one evaluation batch?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.6444351576678335
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.0563879742036163
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-004",
+          "question": "Where should API keys be stored?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.46792188167109355
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.08095320321957855
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-005",
+          "question": "How does the demo platform estimate model API costs?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-export-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.4509828983054338
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.13508403360602997
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.08958079411985705
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        }
+      ]
+    },
+    "BM25": {
+      "aggregate_metrics": {
+        "precision_at_k": 0.3333333333333333,
+        "recall_at_k": 1.0,
+        "mrr_at_k": 1.0
+      },
+      "per_question": [
+        {
+          "sample_id": "RAG-001",
+          "question": "Which file formats does the demo evaluation platform support for exporting datasets?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01",
+            "doc-retention-01",
+            "doc-limits-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 7.12088637986483
+            },
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 1.1226694920696014
+            },
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.5292821699659529
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-002",
+          "question": "For how long are benchmark results retained by default in the demo platform?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01",
+            "doc-export-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 8.022201534713963
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 3.045870689560564
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.5634247084704209
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-003",
+          "question": "What is the maximum number of prompts in one evaluation batch?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-cost-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 6.03954421093715
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 1.1314946989415988
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 1.0106728169035257
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-004",
+          "question": "Where should API keys be stored?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 4.096153751556212
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.4224763509145275
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "RAG-005",
+          "question": "How does the demo platform estimate model API costs?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-export-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 4.128788338344903
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 2.6778541807561123
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.707177257684692
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        }
+      ]
+    }
+  }
+}

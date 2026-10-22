@@ -1,0 +1,6 @@
+
+{"source_id":"doc-export-01","title":"Dataset Export Formats","content":"The demo evaluation platform supports exporting datasets in CSV, JSONL, and Parquet formats.","category":"product_faq"}
+{"source_id":"doc-retention-01","title":"Benchmark Result Retention","content":"Benchmark results are retained for 90 days by default. A workspace owner may delete results sooner.","category":"policy"}
+{"source_id":"doc-limits-01","title":"Evaluation Batch Limits","content":"A single evaluation batch can contain a maximum of 500 prompts.","category":"limits"}
+{"source_id":"doc-security-01","title":"API Key Security","content":"API keys must be stored on the server as environment variables. They must not be embedded in frontend code.","category":"security"}
+{"source_id":"doc-cost-01","title":"Model API Cost Estimation","content":"Estimated model API costs are calculated using recorded input and output token usage and configured model pricing. The estimate is not a guaranteed billing total.","category":"cost"}

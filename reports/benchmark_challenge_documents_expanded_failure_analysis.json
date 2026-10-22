@@ -1,0 +1,203 @@
+{
+  "source_report": "reports\\benchmark_challenge_documents_expanded_retriever_comparison.json",
+  "retrievers": {
+    "TF-IDF": {
+      "total_questions": 15,
+      "successes": 12,
+      "ranking_errors": 3,
+      "retrieval_misses": 0,
+      "top1_success_rate": 0.8,
+      "failures": [
+        {
+          "sample_id": "CH-008",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-template-limit-01",
+            "doc-limits-01",
+            "doc-document-limit-01"
+          ],
+          "status": "RANKING_ERROR"
+        },
+        {
+          "sample_id": "CH-011",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-secret-rotation-01",
+            "doc-security-01",
+            "doc-api-rate-01"
+          ],
+          "status": "RANKING_ERROR"
+        },
+        {
+          "sample_id": "CH-014",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-dashboard-01",
+            "doc-cost-01",
+            "doc-pricing-01"
+          ],
+          "status": "RANKING_ERROR"
+        }
+      ],
+      "category_summary": [
+        {
+          "category": "cost",
+          "status": "RANKING_ERROR",
+          "count": 1
+        },
+        {
+          "category": "cost",
+          "status": "SUCCESS",
+          "count": 2
+        },
+        {
+          "category": "limits",
+          "status": "RANKING_ERROR",
+          "count": 1
+        },
+        {
+          "category": "limits",
+          "status": "SUCCESS",
+          "count": 2
+        },
+        {
+          "category": "policy",
+          "status": "SUCCESS",
+          "count": 3
+        },
+        {
+          "category": "product_faq",
+          "status": "SUCCESS",
+          "count": 3
+        },
+        {
+          "category": "security",
+          "status": "RANKING_ERROR",
+          "count": 1
+        },
+        {
+          "category": "security",
+          "status": "SUCCESS",
+          "count": 2
+        }
+      ]
+    },
+    "BM25": {
+      "total_questions": 15,
+      "successes": 11,
+      "ranking_errors": 3,
+      "retrieval_misses": 1,
+      "top1_success_rate": 0.7333333333333333,
+      "failures": [
+        {
+          "sample_id": "CH-008",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-template-limit-01",
+            "doc-document-limit-01",
+            "doc-api-rate-01"
+          ],
+          "status": "RETRIEVAL_MISS"
+        },
+        {
+          "sample_id": "CH-009",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-api-rate-01",
+            "doc-document-limit-01",
+            "doc-limits-01"
+          ],
+          "status": "RANKING_ERROR"
+        },
+        {
+          "sample_id": "CH-011",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-import-01",
+            "doc-security-01",
+            "doc-secret-rotation-01"
+          ],
+          "status": "RANKING_ERROR"
+        },
+        {
+          "sample_id": "CH-014",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-pricing-01",
+            "doc-cost-dashboard-01",
+            "doc-cost-01"
+          ],
+          "status": "RANKING_ERROR"
+        }
+      ],
+      "category_summary": [
+        {
+          "category": "cost",
+          "status": "RANKING_ERROR",
+          "count": 1
+        },
+        {
+          "category": "cost",
+          "status": "SUCCESS",
+          "count": 2
+        },
+        {
+          "category": "limits",
+          "status": "RANKING_ERROR",
+          "count": 1
+        },
+        {
+          "category": "limits",
+          "status": "RETRIEVAL_MISS",
+          "count": 1
+        },
+        {
+          "category": "limits",
+          "status": "SUCCESS",
+          "count": 1
+        },
+        {
+          "category": "policy",
+          "status": "SUCCESS",
+          "count": 3
+        },
+        {
+          "category": "product_faq",
+          "status": "SUCCESS",
+          "count": 3
+        },
+        {
+          "category": "security",
+          "status": "RANKING_ERROR",
+          "count": 1
+        },
+        {
+          "category": "security",
+          "status": "SUCCESS",
+          "count": 2
+        }
+      ]
+    }
+  }
+}

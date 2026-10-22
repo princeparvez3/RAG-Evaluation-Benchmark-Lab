@@ -1,0 +1,866 @@
+{
+  "evaluation_type": "retrieval_only",
+  "dataset": "benchmark_challenge",
+  "total_samples": 15,
+  "k": 3,
+  "retrievers": {
+    "TF-IDF": {
+      "aggregate_metrics": {
+        "precision_at_k": 0.3333333333333333,
+        "recall_at_k": 1.0,
+        "mrr_at_k": 1.0
+      },
+      "per_question": [
+        {
+          "sample_id": "CH-001",
+          "question": "Which export file types are available for datasets?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.2642078649322424
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-002",
+          "question": "Can I export a dataset as Parquet or JSONL?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.37364634587281603
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-003",
+          "question": "What formats can be used to download evaluation datasets?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01",
+            "doc-limits-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.4189233852347539
+            },
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.15218562686022213
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-004",
+          "question": "What is the default retention period for stored benchmark results?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 0.4974683381630913
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.07770357602520787
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-005",
+          "question": "How many days before benchmark results expire?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 0.5222329678670937
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-006",
+          "question": "Can workspace owners delete benchmark results before 90 days?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 0.6154574548966639
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-007",
+          "question": "How many prompts can be included in an evaluation batch?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.6277439535923682
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.06364361191561138
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-008",
+          "question": "What is the prompt limit per evaluation batch?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.6197900740051135
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.07468919081075061
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-009",
+          "question": "What is the largest allowed evaluation batch size?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 0.6197900740051135
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.07468919081075061
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-010",
+          "question": "Should API keys be placed in frontend code?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.5045730315363055
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.0734418926954471
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-011",
+          "question": "How should secrets and API credentials be handled?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.3071207269693983
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.21639179497600264
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-012",
+          "question": "Where do server-side API credentials belong?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.34097912030037847
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.13587538597379237
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-013",
+          "question": "How is the estimated API usage cost calculated?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.39187348045826687
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.11489532967761364
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-014",
+          "question": "Which token counts are used for cost estimation?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.3352650653452091
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-015",
+          "question": "Are model API cost estimates guaranteed to equal billing?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.5877009774312111
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.09607953516133984
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        }
+      ]
+    },
+    "BM25": {
+      "aggregate_metrics": {
+        "precision_at_k": 0.3333333333333333,
+        "recall_at_k": 1.0,
+        "mrr_at_k": 1.0
+      },
+      "per_question": [
+        {
+          "sample_id": "CH-001",
+          "question": "Which export file types are available for datasets?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01",
+            "doc-retention-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 2.40321438146149
+            },
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 1.4665097338723008
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.28207253369443
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-002",
+          "question": "Can I export a dataset as Parquet or JSONL?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01",
+            "doc-limits-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 4.80642876292298
+            },
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 1.6556902028540676
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 1.0534638384488724
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-003",
+          "question": "What formats can be used to download evaluation datasets?",
+          "category": "product_faq",
+          "expected_source_ids": [
+            "doc-export-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-export-01",
+            "doc-limits-01",
+            "doc-security-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 3.2414250083779725
+            },
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 1.7899847963064066
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 1.5228289149854985
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-004",
+          "question": "What is the default retention period for stored benchmark results?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01",
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 6.555691800841662
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 1.294243936460596
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 1.1314946989415988
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-005",
+          "question": "How many days before benchmark results expire?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 4.3103528167024585
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-006",
+          "question": "Can workspace owners delete benchmark results before 90 days?",
+          "category": "policy",
+          "expected_source_ids": [
+            "doc-retention-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-retention-01",
+            "doc-limits-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 7.678361292911262
+            },
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 1.2607026263404537
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-007",
+          "question": "How many prompts can be included in an evaluation batch?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-security-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 4.778841584596696
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 1.8454735254441959
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.7360330176089034
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-008",
+          "question": "What is the prompt limit per evaluation batch?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-cost-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 2.2574363319157884
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 1.1314946989415988
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.6426563080990739
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-009",
+          "question": "What is the largest allowed evaluation batch size?",
+          "category": "limits",
+          "expected_source_ids": [
+            "doc-limits-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-limits-01",
+            "doc-cost-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-limits-01",
+              "title": "Evaluation Batch Limits",
+              "score": 2.2574363319157884
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 1.1314946989415988
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.6426563080990739
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-010",
+          "question": "Should API keys be placed in frontend code?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 5.472262200463781
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.4224763509145275
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.3680165088044517
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-011",
+          "question": "How should secrets and API credentials be handled?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 1.989226074658467
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.844952701829055
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.3680165088044517
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-012",
+          "question": "Where do server-side API credentials belong?",
+          "category": "security",
+          "expected_source_ids": [
+            "doc-security-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-security-01",
+            "doc-cost-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 1.5198609981218407
+            },
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 0.4224763509145275
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-013",
+          "question": "How is the estimated API usage cost calculated?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-security-01",
+            "doc-export-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 5.696371564739614
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.707177257684692
+            },
+            {
+              "source_id": "doc-export-01",
+              "title": "Dataset Export Formats",
+              "score": 0.2746397992946222
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-014",
+          "question": "Which token counts are used for cost estimation?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-retention-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 3.5034807107723167
+            },
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 1.4665097338723008
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        },
+        {
+          "sample_id": "CH-015",
+          "question": "Are model API cost estimates guaranteed to equal billing?",
+          "category": "cost",
+          "expected_source_ids": [
+            "doc-cost-01"
+          ],
+          "retrieved_source_ids": [
+            "doc-cost-01",
+            "doc-security-01",
+            "doc-retention-01"
+          ],
+          "retrieved_documents": [
+            {
+              "source_id": "doc-cost-01",
+              "title": "Model API Cost Estimation",
+              "score": 5.579782012370021
+            },
+            {
+              "source_id": "doc-security-01",
+              "title": "API Key Security",
+              "score": 0.4663971596729684
+            },
+            {
+              "source_id": "doc-retention-01",
+              "title": "Benchmark Result Retention",
+              "score": 0.3438402418026994
+            }
+          ],
+          "precision_at_k": 0.3333333333333333,
+          "recall_at_k": 1.0,
+          "reciprocal_rank_at_k": 1.0
+        }
+      ]
+    }
+  }
+}

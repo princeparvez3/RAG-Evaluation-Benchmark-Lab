@@ -1,0 +1,13 @@
+
+fastapi
+uvicorn[standard]
+streamlit
+pandas
+numpy
+scikit-learn
+pydantic
+python-dotenv
+httpx
+pytest
+plotly
+rank-bm25
