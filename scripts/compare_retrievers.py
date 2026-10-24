@@ -21,13 +21,15 @@ DEFAULT_KNOWLEDGE_BASE = (
 )
 
 
+
 def run_comparison(
     k: int = 3,
     output_path: str | Path | None = None,
     dataset_path: str | Path | None = None,
     knowledge_base_path: str | Path | None = None,
+    persist_report: bool = True,
 ) -> tuple[dict, Path]:
-    """Compare TF-IDF and BM25 on the same dataset and knowledge base."""
+    """Compare TF-IDF and BM25 and optionally persist the JSON report."""
 
     if not isinstance(k, int) or isinstance(k, bool) or k < 1:
         raise ValueError("k must be a positive integer.")
@@ -85,12 +87,14 @@ def run_comparison(
     else:
         report_path = Path(output_path)
 
-    report_path.parent.mkdir(parents=True, exist_ok=True)
+    if persist_report:
+        report_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with report_path.open("w", encoding="utf-8") as file:
-        json.dump(report, file, indent=2, ensure_ascii=False)
+        with report_path.open("w", encoding="utf-8") as file:
+            json.dump(report, file, indent=2, ensure_ascii=False)
 
     return report, report_path
+
 
 
 def main() -> None:

@@ -1,6 +1,6 @@
 
 import json
-import sqlite3
+import os
 from pathlib import Path
 from typing import Literal
 
@@ -9,7 +9,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.services.failure_analyzer import analyze_retrieval_failures
 from app.services.run_history import (
+    DATABASE_ERRORS,
     get_evaluation_run,
+    get_latest_evaluation_run,
     list_evaluation_runs,
     save_evaluation_run,
 )
@@ -20,6 +22,23 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 REPORT_PATH = (
     PROJECT_ROOT / "reports" / "api_retriever_comparison.json"
+)
+
+# Local development saves reports to disk by default.
+# Vercel disables report-file writes unless explicitly configured.
+_default_persist = "false" if os.getenv("VERCEL") else "true"
+
+PERSIST_REPORT_FILES = (
+    os.getenv("PERSIST_REPORT_FILES", _default_persist)
+    .strip()
+    .lower()
+    in {"1", "true", "yes"}
+)
+
+REPORT_LOCATION = (
+    "reports/api_retriever_comparison.json"
+    if PERSIST_REPORT_FILES
+    else "Saved in evaluation history database"
 )
 
 DATASETS = {
@@ -54,20 +73,34 @@ app = FastAPI(
     title="RAG Evaluation & Benchmark Lab API",
     description=(
         "Retrieval benchmarking, TF-IDF vs BM25 comparison, "
-        "failure analysis, JSON reports, and persistent run history."
+        "failure analysis, JSON reports, and evaluation history."
     ),
-    version="1.4.0",
+    version="1.5.0",
 )
+
+allowed_origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "").strip().rstrip("/")
+
+if frontend_origin and frontend_origin not in allowed_origins:
+    allowed_origins.append(frontend_origin)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=False,
     allow_methods=["GET", "POST"],
     allow_headers=["Content-Type"],
+)
+
+API_ERRORS = DATABASE_ERRORS + (
+    ValueError,
+    OSError,
+    RuntimeError,
+    json.JSONDecodeError,
 )
 
 
@@ -89,7 +122,7 @@ def health_check():
 def project_info():
     return {
         "project": "RAG Evaluation & Benchmark Lab",
-        "version": "1.4.0",
+        "version": "1.5.0",
         "retrievers": ["TF-IDF", "BM25"],
         "metrics": [
             "Precision@K",
@@ -104,6 +137,11 @@ def project_info():
         "latest_report_endpoint": "/api/v1/benchmark/latest",
         "failure_analysis_endpoint": "/api/v1/benchmark/failures",
         "run_history_endpoint": "/api/v1/runs",
+        "report_storage": (
+            "database_and_local_file"
+            if PERSIST_REPORT_FILES
+            else "evaluation_history_database"
+        ),
     }
 
 
@@ -120,7 +158,7 @@ def execute_benchmark(
         description="Choose the default or expanded benchmark dataset.",
     ),
 ):
-    """Run a selected benchmark and save its report and history."""
+    """Run a benchmark and save its result in evaluation history."""
 
     config = DATASETS[dataset]
 
@@ -130,11 +168,12 @@ def execute_benchmark(
             output_path=REPORT_PATH,
             dataset_path=config["dataset_path"],
             knowledge_base_path=config["knowledge_base_path"],
+            persist_report=PERSIST_REPORT_FILES,
         )
 
         saved_run = save_evaluation_run(report)
 
-    except (ValueError, OSError, sqlite3.Error, RuntimeError) as exc:
+    except API_ERRORS as exc:
         raise HTTPException(
             status_code=500,
             detail=f"Benchmark execution or history save failed: {exc}",
@@ -142,7 +181,7 @@ def execute_benchmark(
 
     return {
         "status": "completed",
-        "report_file": "reports/api_retriever_comparison.json",
+        "report_file": REPORT_LOCATION,
         "run": saved_run,
         "report": report,
     }
@@ -150,55 +189,76 @@ def execute_benchmark(
 
 @app.get("/api/v1/benchmark/latest", tags=["Benchmark"])
 def get_latest_benchmark():
-    """Return the latest benchmark JSON report."""
-
-    if not REPORT_PATH.is_file():
-        raise HTTPException(
-            status_code=404,
-            detail="No benchmark report exists yet. Run a benchmark first.",
-        )
+    """Return the latest saved benchmark report."""
 
     try:
-        with REPORT_PATH.open("r", encoding="utf-8") as file:
-            report = json.load(file)
-    except (OSError, json.JSONDecodeError) as exc:
+        latest_run = get_latest_evaluation_run()
+
+        if latest_run is not None:
+            return {
+                "status": "completed",
+                "report_file": REPORT_LOCATION,
+                "run_id": latest_run["run_id"],
+                "report": latest_run["report"],
+            }
+
+        # Backward-compatible fallback for older local reports.
+        if PERSIST_REPORT_FILES and REPORT_PATH.is_file():
+            with REPORT_PATH.open("r", encoding="utf-8") as file:
+                report = json.load(file)
+
+            return {
+                "status": "completed",
+                "report_file": REPORT_LOCATION,
+                "report": report,
+            }
+
+    except API_ERRORS as exc:
         raise HTTPException(
             status_code=500,
-            detail=f"Could not read the benchmark report: {exc}",
+            detail=f"Could not load the latest benchmark: {exc}",
         ) from exc
 
-    return {
-        "status": "completed",
-        "report_file": "reports/api_retriever_comparison.json",
-        "report": report,
-    }
+    raise HTTPException(
+        status_code=404,
+        detail="No saved benchmark exists yet. Run a benchmark first.",
+    )
 
 
 @app.get("/api/v1/benchmark/failures", tags=["Failure Analysis"])
 def get_failure_analysis():
-    """Analyze retrieval outcomes from the latest benchmark."""
-
-    if not REPORT_PATH.is_file():
-        raise HTTPException(
-            status_code=404,
-            detail="No benchmark report exists yet. Run a benchmark first.",
-        )
+    """Return failure analysis for the latest saved benchmark."""
 
     try:
-        with REPORT_PATH.open("r", encoding="utf-8") as file:
-            report = json.load(file)
+        latest_run = get_latest_evaluation_run()
 
-        analysis = analyze_retrieval_failures(report)
+        if latest_run is not None:
+            analysis = latest_run["failure_analysis"]
+            source_report = latest_run["dataset"]
 
-    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        elif PERSIST_REPORT_FILES and REPORT_PATH.is_file():
+            # Fallback for reports generated before history was added.
+            with REPORT_PATH.open("r", encoding="utf-8") as file:
+                report = json.load(file)
+
+            analysis = analyze_retrieval_failures(report)
+            source_report = REPORT_PATH.name
+
+        else:
+            raise HTTPException(
+                status_code=404,
+                detail="No saved benchmark exists yet. Run a benchmark first.",
+            )
+
+    except API_ERRORS as exc:
         raise HTTPException(
             status_code=500,
-            detail=f"Failure analysis could not be completed: {exc}",
+            detail=f"Failure analysis could not be loaded: {exc}",
         ) from exc
 
     return {
         "status": "completed",
-        "source_report": REPORT_PATH.name,
+        "source_report": source_report,
         "retrievers": analysis,
     }
 
@@ -216,7 +276,8 @@ def get_run_history(
 
     try:
         runs = list_evaluation_runs(limit=limit)
-    except (ValueError, OSError, sqlite3.Error, json.JSONDecodeError) as exc:
+
+    except API_ERRORS as exc:
         raise HTTPException(
             status_code=500,
             detail=f"Could not load evaluation history: {exc}",
@@ -235,7 +296,8 @@ def get_run_details(run_id: str):
 
     try:
         run = get_evaluation_run(run_id)
-    except (ValueError, OSError, sqlite3.Error, json.JSONDecodeError) as exc:
+
+    except API_ERRORS as exc:
         raise HTTPException(
             status_code=500,
             detail=f"Could not load evaluation run: {exc}",
