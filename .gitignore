@@ -1,10 +1,11 @@
+
 # Python virtual environments
 .venv/
 venv/
 venv311/
 env/
 
-# Python cache files
+# Python cache and test files
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -18,8 +19,29 @@ htmlcov/
 secrets.toml
 .streamlit/secrets.toml
 
+# Local evaluation history databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Node.js dependencies
+node_modules/
+
+# Next.js generated files
+.next/
+out/
+dist/
+
+# Package manager and debug logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
 # IDE and operating system files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Generated evaluation report
+reports/api_retriever_comparison.json

@@ -127,7 +127,7 @@ def test_expanded_knowledge_base_comparison(tmp_path):
 
     assert saved_path.is_file()
     assert report["total_samples"] == 15
-    assert report["knowledge_base_document_count"] == 15
+    assert report["knowledge_base_document_count"] == 30
     assert report["knowledge_base"] == "documents_expanded"
 
     for result in report["retrievers"].values():
